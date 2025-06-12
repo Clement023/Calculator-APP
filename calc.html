@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Calculator</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <table border="1">
+            <tr>
+            <td colspan="4">
+                <input type="text" id="inputbox" value="">
+            </td>
+            </tr>
+            <tr>
+            <td class ="acButton" colspan="2" onclick="btnCPressed()">C</td>
+            <td class="acButton" onclick="percentageBtnPressed()">%</td>
+            <td class="operatorButton" onclick="operatorBtnPressed('/')">/</td>
+            </tr>
+            <tr>
+            <td class ="digitButton" onclick="digitBtnPressed(7)">7</td>
+            <td class ="digitButton" onclick="digitBtnPressed(8)">8</td>
+            <td class ="digitButton" onclick="digitBtnPressed(9)">9</td>
+            <td class ="operatorButton" onclick="operatorBtnPressed('x')">x</td>
+            </tr>
+            <tr>
+            <td class ="digitButton"  onclick="digitBtnPressed(4)">4</td>
+            <td class ="digitButton" onclick="digitBtnPressed(5)">5</td>
+            <td class ="digitButton" onclick="digitBtnPressed(6)">6</td>
+            <td class ="operatorButton" onclick="operatorBtnPressed('-')">-</td>
+            </tr>
+            <tr>
+            <td class ="digitButton"  onclick="digitBtnPressed(1)">1</td>
+            <td class ="digitButton" onclick="digitBtnPressed(2)">2</td>
+            <td class ="digitButton"  onclick="digitBtnPressed(3)">3</td>
+            <td class ="operatorButton" onclick="operatorBtnPressed('+')">+</td>
+            </tr>
+            <tr>
+            <td class ="digitButton" colspan="2" onclick="digitBtnPressed(0)">0</td>
+            <td class ="digitButton" onclick="symBolsPressed ()">,</td>
+            <td class ="operatorButton" onclick="equalBtnPressed()">=</td>
+            </tr>
+            <tr>
+            <td class="functionButton" onclick="squarePressed()">x<sup>2</sup></td>
+            <td class="functionButton" onclick="cubePressed()">x<sup>3</sup></td>
+            <td class="functionButton" onclick="squareRootPressed()">&#8730x</td>
+            <td class="functionButton" onclick="cubeRootPressed()">&#8731x</td>
+            </tr>
+            <tr>
+            <td class="functionButton" onclick="factorialPressed()">x!</td>
+            <td class="functionButton" onclick="sinPressed()">sin</td>
+            <td class="functionButton" onclick="cosPressed()">cos</td>
+            <td class="functionButton" onclick="tanPressed()">tan</td>
+            </tr>
+            <tr>
+            <td class="functionButton" onclick="sinhPressed()">sinh</td>
+            <td class="functionButton" onclick="coshPressed()">cosh</td>
+            <td class="functionButton" onclick="tanhPressed()">tanh</td>
+            <td></td>
+            </tr>
+        </table>
+
+        <script>
+            var newLine = true;
+            var value1;
+            var currentOperator;
+
+            function digitBtnPressed(button) {
+            if (newLine) {
+                document.getElementById("inputbox").value = button;
+                newLine = false;
+            } else {
+                var currentValue = document.getElementById("inputbox").value;
+                document.getElementById("inputbox").value = currentValue + button;
+            }
+            }
+
+            function btnCPressed() {
+            document.getElementById("inputbox").value = 0;
+            newLine = true;
+            }
+
+            function operatorBtnPressed(operator) {
+            currentOperator = operator;
+            value1 = parseFloat(document.getElementById("inputbox").value);
+            newLine = true;
+            }
+
+            function equalBtnPressed() {
+                var value2 = parseFloat(document.getElementById("inputbox").value);
+                var finalTotal;
+
+                switch (currentOperator) {
+                    case "+":
+                    finalTotal = value1 + value2;
+                    break;
+                    case "-":
+                    finalTotal = value1 - value2;
+                    break;
+                    case "/":
+                    finalTotal = value1 / value2;
+                    break;
+                    case "x":
+                    finalTotal = value1 * value2;
+                    break;
+                    case "%":
+                    finalTotal = value1 % value2;
+                    break;
+                }
+                document.getElementById("inputbox").value = finalTotal;
+            }
+
+            function symBolsPressed() {
+                var currentValue = document.getElementById("inputbox").value;
+                if (!currentValue.includes(".")) {
+                    document.getElementById("inputbox").value = currentValue + ".";
+                }
+            }
+
+            function percentageBtnPressed() {
+                var currentValue = parseFloat(document.getElementById("inputbox").value);
+                var percentageValue = currentValue / 100;
+                document.getElementById("inputbox").value = percentageValue;
+            }
+
+            function squarePressed() {
+                var currentValue = parseFloat(document.getElementById("inputbox").value);
+                document.getElementById("inputbox").value = currentValue ** 2;
+            }
+
+            function cubePressed() {
+                var currentValue = parseFloat(document.getElementById("inputbox").value);
+                document.getElementById("inputbox").value = currentValue ** 3;
+            }
+
+            function squareRootPressed() {
+                var currentValue = parseFloat(document.getElementById("inputbox").value);
+                document.getElementById("inputbox").value = Math.sqrt(currentValue);
+            }
+
+            function cubeRootPressed() {
+                var currentValue = parseFloat(document.getElementById("inputbox").value);
+                document.getElementById("inputbox").value = Math.cbrt(currentValue);
+            }
+
+            function factorialPressed() {
+                var currentValue = parseInt(document.getElementById("inputbox").value);
+                var factorial = 1;
+                for (var i = 1; i <= currentValue; i++) {
+                    factorial *= i;
+                }
+                document.getElementById("inputbox").value = factorial;
+            }
+
+            function sinPressed() {
+                var currentValue = parseFloat(document.getElementById("inputbox").value);
+                document.getElementById("inputbox").value = Math.sin(currentValue);
+            }
+
+            function cosPressed() {
+                var currentValue = parseFloat(document.getElementById("inputbox").value);
+                document.getElementById("inputbox").value = Math.cos(currentValue);
+            }
+
+            function tanPressed() {
+                var currentValue = parseFloat(document.getElementById("inputbox").value);
+                document.getElementById("inputbox").value = Math.tan(currentValue);
+            }
+
+            function sinhPressed() {
+            var currentValue = parseFloat(document.getElementById("inputbox").value);
+            document.getElementById("inputbox").value = Math.sinh(currentValue);
+            }
+
+            function coshPressed() {
+            var currentValue = parseFloat(document.getElementById("inputbox").value);
+            document.getElementById("inputbox").value = Math.cosh(currentValue);
+            }
+
+            function tanhPressed() {
+            var currentValue = parseFloat(document.getElementById("inputbox").value);
+            document.getElementById("inputbox").value = Math.tanh(currentValue);
+            }
+        </script>
+
+            
+        </script>
+    </body>
+</html>
