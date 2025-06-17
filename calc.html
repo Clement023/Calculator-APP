@@ -8,56 +8,52 @@
     <body>
         <table border="1">
             <tr>
-            <td colspan="4">
+            <td colspan="7">
                 <input type="text" id="inputbox" value="">
             </td>
             </tr>
             <tr>
-            <td class ="acButton" colspan="2" onclick="btnCPressed()">C</td>
-            <td class="acButton" onclick="percentageBtnPressed()">%</td>
-            <td class="operatorButton" onclick="operatorBtnPressed('/')">/</td>
+                <td class="acButton" onclick="squarePressed()">x<sup>2</sup></td>
+                <td class="acButton" onclick="cubePressed()">x<sup>3</sup></td>
+                <td class="acButton" onclick="squareRootPressed()">&#8730x</td>
+                <td class="acButton" onclick="cubeRootPressed()">&#8731x</td>
+            
+                <td class ="acButton" onclick="btnCPressed()">C</td>
+                <td class="acButton" onclick="percentageBtnPressed()">%</td>
+                <td class="operatorButton" onclick="operatorBtnPressed('/')">/</td>
+            </tr>
+
+            <tr>
+                <td class="acButton" onclick="factorialPressed()">x!</td>
+                <td class="acButton" onclick="sinPressed()">sin</td>
+                <td class="acButton" onclick="cosPressed()">cos</td>
+                <td class ="digitButton" onclick="digitBtnPressed(7)">7</td>
+                <td class ="digitButton" onclick="digitBtnPressed(8)">8</td>
+                <td class ="digitButton" onclick="digitBtnPressed(9)">9</td>
+                <td class ="operatorButton" onclick="operatorBtnPressed('x')">x</td>
             </tr>
             <tr>
-            <td class ="digitButton" onclick="digitBtnPressed(7)">7</td>
-            <td class ="digitButton" onclick="digitBtnPressed(8)">8</td>
-            <td class ="digitButton" onclick="digitBtnPressed(9)">9</td>
-            <td class ="operatorButton" onclick="operatorBtnPressed('x')">x</td>
+                <td class="acButton" onclick="tanPressed()">tan</td>
+                <td class="acButton" onclick="sinhPressed()">sinh</td>
+                <td class="acButton" onclick="coshPressed()">cosh</td>
+                <td class ="digitButton"  onclick="digitBtnPressed(4)">4</td>
+                <td class ="digitButton" onclick="digitBtnPressed(5)">5</td>
+                <td class ="digitButton" onclick="digitBtnPressed(6)">6</td>
+                <td class ="operatorButton" onclick="operatorBtnPressed('-')">-</td>
             </tr>
             <tr>
-            <td class ="digitButton"  onclick="digitBtnPressed(4)">4</td>
-            <td class ="digitButton" onclick="digitBtnPressed(5)">5</td>
-            <td class ="digitButton" onclick="digitBtnPressed(6)">6</td>
-            <td class ="operatorButton" onclick="operatorBtnPressed('-')">-</td>
-            </tr>
-            <tr>
-            <td class ="digitButton"  onclick="digitBtnPressed(1)">1</td>
-            <td class ="digitButton" onclick="digitBtnPressed(2)">2</td>
-            <td class ="digitButton"  onclick="digitBtnPressed(3)">3</td>
-            <td class ="operatorButton" onclick="operatorBtnPressed('+')">+</td>
+                <td class="acButton" onclick="tanhPressed()">tanh</td>
+                <td class ="digitButton"  onclick="digitBtnPressed(1)">1</td>
+                <td class ="digitButton" onclick="digitBtnPressed(2)">2</td>
+                <td class ="digitButton"  onclick="digitBtnPressed(3)">3</td>
+                <td class ="operatorButton" onclick="operatorBtnPressed('+')">+</td>
             </tr>
             <tr>
             <td class ="digitButton" colspan="2" onclick="digitBtnPressed(0)">0</td>
             <td class ="digitButton" onclick="symBolsPressed ()">,</td>
             <td class ="operatorButton" onclick="equalBtnPressed()">=</td>
             </tr>
-            <tr>
-            <td class="functionButton" onclick="squarePressed()">x<sup>2</sup></td>
-            <td class="functionButton" onclick="cubePressed()">x<sup>3</sup></td>
-            <td class="functionButton" onclick="squareRootPressed()">&#8730x</td>
-            <td class="functionButton" onclick="cubeRootPressed()">&#8731x</td>
-            </tr>
-            <tr>
-            <td class="functionButton" onclick="factorialPressed()">x!</td>
-            <td class="functionButton" onclick="sinPressed()">sin</td>
-            <td class="functionButton" onclick="cosPressed()">cos</td>
-            <td class="functionButton" onclick="tanPressed()">tan</td>
-            </tr>
-            <tr>
-            <td class="functionButton" onclick="sinhPressed()">sinh</td>
-            <td class="functionButton" onclick="coshPressed()">cosh</td>
-            <td class="functionButton" onclick="tanhPressed()">tanh</td>
-            <td></td>
-            </tr>
+    
         </table>
 
         <script>
@@ -181,9 +177,31 @@
             var currentValue = parseFloat(document.getElementById("inputbox").value);
             document.getElementById("inputbox").value = Math.tanh(currentValue);
             }
+
+            function ePressed() {
+                document.getElementById("inputbox").value = Math.E;
+            }
+
+            function piPressed() {
+                document.getElementById("inputbox").value = Math.PI;
+            }
+
+            function naturalLogPressed() {
+                var currentValue = parseFloat(document.getElementById("inputbox").value);
+                document.getElementById("inputbox").value = Math.log(currentValue);
+            }
+
+            function logPressed() {
+                var currentValue = parseFloat(document.getElementById("inputbox").value);
+                document.getElementById("inputbox").value = Math.log10(currentValue);
+            }
+
+            function inversePressed() {
+                var currentValue = parseFloat(document.getElementById("inputbox").value);
+                document.getElementById("inputbox").value = 1 / currentValue;
+            }
         </script>
 
-            
-        </script>
+        
     </body>
 </html>
