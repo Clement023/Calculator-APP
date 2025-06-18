@@ -47,97 +47,74 @@ function equalBtnPressed() {
     document.getElementById("inputbox").value = finalTotal;
 }
 
-function symBolsPressed() {
-    var currentValue = document.getElementById("inputbox").value;
-    if (!currentValue.includes(".")) {
-        document.getElementById("inputbox").value = currentValue + ".";
+function advancedOperations(operation) {
+    var currentValue = parseFloat(document.getElementById("inputbox").value);
+    var result;
+
+    switch (operation) {
+        case "decimal":
+            if (!document.getElementById("inputbox").value.includes(".")) {
+                document.getElementById("inputbox").value += ".";
+            }
+            return;
+        case "percentage":
+            result = currentValue / 100;
+            break;
+        case "square":
+            result = currentValue ** 2;
+            break;
+        case "cube":
+            result = currentValue ** 3;
+            break;
+        case "squareRoot":
+            result = Math.sqrt(currentValue);
+            break;
+        case "cubeRoot":
+            result = Math.cbrt(currentValue);
+            break;
+        case "factorial":
+            result = 1;
+            for (var i = 1; i <= currentValue; i++) {
+                result *= i;
+            }
+            break;
+        case "sin":
+            result = Math.sin(currentValue);
+            break;
+        case "cos":
+            result = Math.cos(currentValue);
+            break;
+        case "tan":
+            result = Math.tan(currentValue);
+            break;
+        case "sinh":
+            result = Math.sinh(currentValue);
+            break;
+        case "cosh":
+            result = Math.cosh(currentValue);
+            break;
+        case "tanh":
+            result = Math.tanh(currentValue);
+            break;
+        case "e":
+            result = Math.E;
+            break;
+        case "pi":
+            result = Math.PI;
+            break;
+        case "naturalLog":
+            result = Math.log(currentValue);
+            break;
+        case "log":
+            result = Math.log10(currentValue);
+            break;
+        case "inverse":
+            result = 1 / currentValue;
+            break;
+        default:
+            console.error("Invalid operation");
+            return;
     }
-}
 
-function percentageBtnPressed() {
-    var currentValue = parseFloat(document.getElementById("inputbox").value);
-    var percentageValue = currentValue / 100;
-    document.getElementById("inputbox").value = percentageValue;
-}
-
-function squarePressed() {
-    var currentValue = parseFloat(document.getElementById("inputbox").value);
-    document.getElementById("inputbox").value = currentValue ** 2;
-}
-
-function cubePressed() {
-    var currentValue = parseFloat(document.getElementById("inputbox").value);
-    document.getElementById("inputbox").value = currentValue ** 3;
-}
-
-function squareRootPressed() {
-    var currentValue = parseFloat(document.getElementById("inputbox").value);
-    document.getElementById("inputbox").value = Math.sqrt(currentValue);
-}
-
-function cubeRootPressed() {
-    var currentValue = parseFloat(document.getElementById("inputbox").value);
-    document.getElementById("inputbox").value = Math.cbrt(currentValue);
-}
-
-function factorialPressed() {
-    var currentValue = parseInt(document.getElementById("inputbox").value);
-    var factorial = 1;
-    for (var i = 1; i <= currentValue; i++) {
-        factorial *= i;
-    }
-    document.getElementById("inputbox").value = factorial;
-}
-
-function sinPressed() {
-    var currentValue = parseFloat(document.getElementById("inputbox").value);
-    document.getElementById("inputbox").value = Math.sin(currentValue);
-}
-
-function cosPressed() {
-    var currentValue = parseFloat(document.getElementById("inputbox").value);
-    document.getElementById("inputbox").value = Math.cos(currentValue);
-}
-
-function tanPressed() {
-    var currentValue = parseFloat(document.getElementById("inputbox").value);
-    document.getElementById("inputbox").value = Math.tan(currentValue);
-}
-
-function sinhPressed() {
-var currentValue = parseFloat(document.getElementById("inputbox").value);
-document.getElementById("inputbox").value = Math.sinh(currentValue);
-}
-
-function coshPressed() {
-var currentValue = parseFloat(document.getElementById("inputbox").value);
-document.getElementById("inputbox").value = Math.cosh(currentValue);
-}
-
-function tanhPressed() {
-var currentValue = parseFloat(document.getElementById("inputbox").value);
-document.getElementById("inputbox").value = Math.tanh(currentValue);
-}
-
-function ePressed() {
-    document.getElementById("inputbox").value = Math.E;
-}
-
-function piPressed() {
-    document.getElementById("inputbox").value = Math.PI;
-}
-
-function naturalLogPressed() {
-    var currentValue = parseFloat(document.getElementById("inputbox").value);
-    document.getElementById("inputbox").value = Math.log(currentValue);
-}
-
-function logPressed() {
-    var currentValue = parseFloat(document.getElementById("inputbox").value);
-    document.getElementById("inputbox").value = Math.log10(currentValue);
-}
-
-function inversePressed() {
-    var currentValue = parseFloat(document.getElementById("inputbox").value);
-    document.getElementById("inputbox").value = 1 / currentValue;
+    document.getElementById("inputbox").value = result;
 }
